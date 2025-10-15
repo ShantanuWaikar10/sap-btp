@@ -31,7 +31,7 @@ const Headers = () => {
           {/* Company Code */}
           <div className="">
             <label
-              for="company_code"
+              htmlFor="company_code"
               className="block mb-2 text-sm font-medium text-gray-400"
             >
               Company Code:<span className="text-red-300">*</span>
@@ -39,7 +39,7 @@ const Headers = () => {
             <input
               type="number"
               id="company_code"
-              class="bg-[#171c22] border-1 border-gray-700 border-b-white text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5"
+              className="bg-[#171c22] border-1 border-gray-700 border-b-white text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5"
               required
             />
           </div>
@@ -47,7 +47,7 @@ const Headers = () => {
           {/* GL Account */}
           <div className="">
             <label
-              for="gl_account"
+              htmlFor="gl_account"
               className="block mb-2 text-sm font-medium text-gray-400"
             >
               GL Account:
@@ -76,7 +76,7 @@ const Headers = () => {
           {/* Customer */}
           <div className="">
             <label
-              for="customer"
+              htmlFor="customer"
               className="block mb-2 text-sm font-medium text-gray-400"
             >
               Customer:
@@ -105,7 +105,7 @@ const Headers = () => {
           {/* Customer Account Group  */}
           <div className="">
             <label
-              for="customer_account_group"
+              htmlFor="customer_account_group"
               className="block mb-2 text-sm font-medium text-gray-400"
             >
               Customer Account Group:
@@ -134,7 +134,7 @@ const Headers = () => {
           {/* Profit Centre  */}
           <div className="">
             <label
-              for="profit_centre"
+              htmlFor="profit_centre"
               className="block mb-2 text-sm font-medium text-gray-400"
             >
               Profit Centre:
@@ -163,7 +163,7 @@ const Headers = () => {
           {/* Transaction Currency  */}
           <div className="">
             <label
-              for="transaction_currency"
+              htmlFor="transaction_currency"
               className="block mb-2 text-sm font-medium text-gray-400"
             >
               Transaction Currency:
@@ -192,7 +192,7 @@ const Headers = () => {
           {/* Key Date */}
           <div className="">
             <label
-              for="key_date"
+              htmlFor="key_date"
               className="block mb-2 text-sm font-medium text-gray-400"
             >
               Key Date:<span className="text-red-300">*</span>
@@ -208,7 +208,7 @@ const Headers = () => {
           {/* Include special GL items */}
           <div className="">
             <label
-              for="include_special_gl_items"
+              htmlFor="include_special_gl_items"
               className="block mb-2 text-sm font-medium text-gray-400"
             >
               Include Special GL Items:
@@ -219,7 +219,7 @@ const Headers = () => {
                 className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 "
               ></input>
               <label
-                for="inline-checkbox"
+                htmlFor="inline-checkbox"
                 className="ms-2 text-sm font-medium text-gray-400"
               >
                 True
@@ -230,114 +230,114 @@ const Headers = () => {
           {/* Ageing Calculation Method */}
           <div className="col-span-2">
             <label
-              for="Ageing_Calculation_Method"
+              htmlFor="Ageing_Calculation_Method"
               className="block mb-2 text-sm font-medium text-gray-400"
             >
               Ageing Calculation Method:<span className="text-red-300">*</span>
             </label>
 
-            <li class="w-full rounded-t-lg">
-              <div class="flex items-center ps-3">
+            <li className="w-full rounded-t-lg">
+              <div className="flex items-center ps-3">
                 <input
                   id="list-radio-1"
                   type="radio"
                   value=""
                   name="list-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
                 />
                 <label
-                  for="list-radio-license"
-                  class="w-full py-3 ms-2 text-sm font-medium text-gray-400"
+                  htmlFor="list-radio-license"
+                  className="w-full py-3 ms-2 text-sm font-medium text-gray-400"
                 >
                   R1: Net due Date (Baseline Date + Payment Terms Days){" "}
                 </label>
               </div>
             </li>
 
-            <li class="w-full rounded-t-lg">
-              <div class="flex items-center ps-3">
+            <li className="w-full rounded-t-lg">
+              <div className="flex items-center ps-3">
                 <input
                   id="list-radio-2"
                   type="radio"
                   value=""
                   name="list-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
                 />
                 <label
-                  for="list-radio-license"
-                  class="w-full py-3 ms-2 text-sm font-medium text-gray-400"
+                  htmlFor="list-radio-license"
+                  className="w-full py-3 ms-2 text-sm font-medium text-gray-400"
                 >
                   R2: Posting Date + Payment Terms Days{" "}
                 </label>
               </div>
             </li>
 
-            <li class="w-full rounded-t-lg">
-              <div class="flex items-center ps-3">
+            <li className="w-full rounded-t-lg">
+              <div className="flex items-center ps-3">
                 <input
                   id="list-radio-1"
                   type="radio"
                   value=""
                   name="list-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
                 />
                 <label
-                  for="list-radio-license"
-                  class="w-full py-3 ms-2 text-sm font-medium text-gray-400"
+                  htmlFor="list-radio-license"
+                  className="w-full py-3 ms-2 text-sm font-medium text-gray-400"
                 >
                   R3: Document Date + Payment Terms Days{" "}
                 </label>
               </div>
             </li>
 
-            <li class="w-full rounded-t-lg">
-              <div class="flex items-center ps-3">
+            <li className="w-full rounded-t-lg">
+              <div className="flex items-center ps-3">
                 <input
                   id="list-radio-4"
                   type="radio"
                   value=""
                   name="list-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
                 />
                 <label
-                  for="list-radio-license"
-                  class="w-full py-3 ms-2 text-sm font-medium text-gray-400"
+                  htmlFor="list-radio-license"
+                  className="w-full py-3 ms-2 text-sm font-medium text-gray-400"
                 >
                   R4: Baseline Date{" "}
                 </label>
               </div>
             </li>
 
-            <li class="w-full rounded-t-lg">
-              <div class="flex items-center ps-3">
+            <li className="w-full rounded-t-lg">
+              <div className="flex items-center ps-3">
                 <input
                   id="list-radio-5"
                   type="radio"
                   value=""
                   name="list-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
                 />
                 <label
-                  for="list-radio-license"
-                  class="w-full py-3 ms-2 text-sm font-medium text-gray-400"
+                  htmlFor="list-radio-license"
+                  className="w-full py-3 ms-2 text-sm font-medium text-gray-400"
                 >
                   R5: Posting Date{" "}
                 </label>
               </div>
             </li>
 
-            <li class="w-full rounded-t-lg">
-              <div class="flex items-center ps-3">
+            <li className="w-full rounded-t-lg">
+              <div className="flex items-center ps-3">
                 <input
                   id="list-radio-6"
                   type="radio"
                   value=""
                   name="list-radio"
-                  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
+                  className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300"
                 />
                 <label
-                  for="list-radio-license"
-                  class="w-full py-3 ms-2 text-sm font-medium text-gray-400"
+                  htmlFor="list-radio-license"
+                  className="w-full py-3 ms-2 text-sm font-medium text-gray-400"
                 >
                   R6: Document Date{" "}
                 </label>
@@ -348,58 +348,61 @@ const Headers = () => {
           {/* Ageing Bucket */}
           <div className="col-span-2">
             <label
-              for="Ageing_Bucket"
+              htmlFor="Ageing_Bucket"
               className="block mb-2 text-sm font-medium text-gray-400"
             >
               Ageing Bucket:
             </label>
             <div className="grid grid-cols-3 gap-4">
               <select
+                defaultValue="select"
                 className="bg-[#171c22] text-center border-1 border-gray-700 border-b-white text-gray-400 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5"
                 name=""
                 id=""
               >
-                <option selected>Select</option>
+                <option value="select">Select</option>
                 <option value="30">30 (30)</option>
               </select>
 
               <select
+                defaultValue="select"
                 className="bg-[#171c22] text-center border-1 border-gray-700 border-b-white text-gray-400 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5"
                 name=""
                 id=""
               >
-                <option selected>Select</option>
+                <option value="select">Select</option>
                 <option value="60">60 (60)</option>
               </select>
 
               <select
+                defaultValue="select"
                 className="bg-[#171c22] text-center border-1 border-gray-700 border-b-white text-gray-400 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5"
                 name=""
                 id=""
               >
-                <option selected>Select</option>
+                <option value="select">Select</option>
                 <option value="90">90 (90)</option>
               </select>
 
               <select
+                defaultValue="select"
                 className="bg-[#171c22] text-center border-1 border-gray-700 border-b-white text-gray-400 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5"
                 name=""
                 id=""
               >
-                <option selected>Select</option>
+                <option value="select">Select</option>
                 <option value="180">180 (180)</option>
               </select>
 
               <select
+                defaultValue="select"
                 className="bg-[#171c22] text-center border-1 border-gray-700 border-b-white text-gray-400 text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-1.5"
                 name=""
                 id=""
               >
-                <option selected>Select</option>
+                <option value="select">Select</option>
                 <option value="365">365 (365)</option>
               </select>
-
-              
             </div>
           </div>
         </div>
