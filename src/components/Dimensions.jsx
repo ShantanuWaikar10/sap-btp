@@ -24,7 +24,7 @@ const Sidebar = () => {
       <div className="h-60 w-1/4 overflow-auto bg-[#171c22] p-4">
         <div className="bg-[#1c232b] p-2 rounded-2xl">
           <div className="">
-            <h1 className="text-white font-bold">Dimensions</h1>
+            <h1 className="text-white font-bold mb-2">Dimensions</h1>
             <hr class="border-white"></hr>
           </div>
 
