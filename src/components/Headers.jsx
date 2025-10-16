@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import {
+  Dialog,
+  DialogBackdrop,
+  DialogPanel,
+  DialogTitle,
+} from "@headlessui/react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 const Headers = () => {
   const [keyStartDate, setKeyStartDate] = useState(null);
@@ -23,6 +30,8 @@ const Headers = () => {
     useState(null);
   const [transactionCurrencyToDate, setTransactionCurrencyToDate] =
     useState(null);
+
+  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -65,11 +74,331 @@ const Headers = () => {
                 placeholderText="To"
                 onChange={(date) => setGlAccountToDate(date)}
               />
-              <input
-                type="text"
-                className="bg-[#171c22] border-1 border-gray-700 border-b-white text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
-                selected={glAccountFromDate}
-              />
+              <div>
+                <div>
+                  <button
+                    onClick={() => setOpen(true)}
+                    className="bg-[#171c22] cursor-pointer border-1 border-gray-700 border-b-white text-gray-400 text-sm rounded-md block w-full text-center py-1.5 px-2"
+                  >
+                    Select
+                  </button>
+                  <Dialog
+                    open={open}
+                    onClose={setOpen}
+                    className="relative z-10"
+                  >
+                    <DialogBackdrop
+                      transition
+                      className="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+                    />
+
+                    <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                      <div className="flex items-end justify-center mt-28 p-4 text-center sm:items-center sm:p-0">
+                        <DialogPanel
+                          transition
+                          className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+                        >
+                          <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <div className="sm:flex sm:items-start">
+                              <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                <DialogTitle
+                                  as="h3"
+                                  className="text-base font-semibold text-gray-900"
+                                >
+                                  Multiple Selection for Customer Code
+                                </DialogTitle>
+                                <Tabs>
+                                  <TabList className="flex gap-2 mt-2">
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Select Single Values
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Select Ranges
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Exclude Single Values
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Exclude Ranges
+                                    </Tab>
+                                  </TabList>
+
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr>
+                                          <th className="py-2">Single Value</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr className="grid grid-cols-2">
+                                          <th className="py-2">Lower limit</th>
+                                          <th className="py-2">Upper limit</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr>
+                                          <th className="py-2">Single Value</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr className="grid grid-cols-2">
+                                          <th className="py-2">Lower limit</th>
+                                          <th className="py-2">Upper limit</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                </Tabs>
+                              </div>
+                            </div>
+                          </div>
+                        </DialogPanel>
+                      </div>
+                    </div>
+                  </Dialog>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -94,11 +423,331 @@ const Headers = () => {
                 placeholderText="To"
                 onChange={(date) => setCustomerToDate(date)}
               />
-              <input
-                type="text"
-                className="bg-[#171c22] border-1 border-gray-700 border-b-white text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
-                selected={glAccountFromDate}
-              />
+              <div>
+                <div>
+                  <button
+                    onClick={() => setOpen(true)}
+                    className="bg-[#171c22] cursor-pointer border-1 border-gray-700 border-b-white text-gray-400 text-sm rounded-md block w-full text-center py-1.5 px-2"
+                  >
+                    Select
+                  </button>
+                  <Dialog
+                    open={open}
+                    onClose={setOpen}
+                    className="relative z-10"
+                  >
+                    <DialogBackdrop
+                      transition
+                      className="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+                    />
+
+                    <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                      <div className="flex items-end justify-center mt-28 p-4 text-center sm:items-center sm:p-0">
+                        <DialogPanel
+                          transition
+                          className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+                        >
+                          <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <div className="sm:flex sm:items-start">
+                              <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                <DialogTitle
+                                  as="h3"
+                                  className="text-base font-semibold text-gray-900"
+                                >
+                                  Multiple Selection for Customer Code
+                                </DialogTitle>
+                                <Tabs>
+                                  <TabList className="flex gap-2 mt-2">
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Select Single Values
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Select Ranges
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Exclude Single Values
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Exclude Ranges
+                                    </Tab>
+                                  </TabList>
+
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr>
+                                          <th className="py-2">Single Value</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr className="grid grid-cols-2">
+                                          <th className="py-2">Lower limit</th>
+                                          <th className="py-2">Upper limit</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr>
+                                          <th className="py-2">Single Value</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr className="grid grid-cols-2">
+                                          <th className="py-2">Lower limit</th>
+                                          <th className="py-2">Upper limit</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                </Tabs>
+                              </div>
+                            </div>
+                          </div>
+                        </DialogPanel>
+                      </div>
+                    </div>
+                  </Dialog>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -123,11 +772,331 @@ const Headers = () => {
                 placeholderText="To"
                 onChange={(date) => setCustomerAccountGroupToDate(date)}
               />
-              <input
-                type="text"
-                className="bg-[#171c22] border-1 border-gray-700 border-b-white text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
-                selected={glAccountFromDate}
-              />
+              <div>
+                <div>
+                  <button
+                    onClick={() => setOpen(true)}
+                    className="bg-[#171c22] cursor-pointer border-1 border-gray-700 border-b-white text-gray-400 text-sm rounded-md block w-full text-center py-1.5 px-2"
+                  >
+                    Select
+                  </button>
+                  <Dialog
+                    open={open}
+                    onClose={setOpen}
+                    className="relative z-10"
+                  >
+                    <DialogBackdrop
+                      transition
+                      className="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+                    />
+
+                    <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                      <div className="flex items-end justify-center mt-28 p-4 text-center sm:items-center sm:p-0">
+                        <DialogPanel
+                          transition
+                          className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+                        >
+                          <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <div className="sm:flex sm:items-start">
+                              <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                <DialogTitle
+                                  as="h3"
+                                  className="text-base font-semibold text-gray-900"
+                                >
+                                  Multiple Selection for Customer Code
+                                </DialogTitle>
+                                <Tabs>
+                                  <TabList className="flex gap-2 mt-2">
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Select Single Values
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Select Ranges
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Exclude Single Values
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Exclude Ranges
+                                    </Tab>
+                                  </TabList>
+
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr>
+                                          <th className="py-2">Single Value</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr className="grid grid-cols-2">
+                                          <th className="py-2">Lower limit</th>
+                                          <th className="py-2">Upper limit</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr>
+                                          <th className="py-2">Single Value</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr className="grid grid-cols-2">
+                                          <th className="py-2">Lower limit</th>
+                                          <th className="py-2">Upper limit</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                </Tabs>
+                              </div>
+                            </div>
+                          </div>
+                        </DialogPanel>
+                      </div>
+                    </div>
+                  </Dialog>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -152,11 +1121,331 @@ const Headers = () => {
                 placeholderText="To"
                 onChange={(date) => setProfitCentreToDate(date)}
               />
-              <input
-                type="text"
-                className="bg-[#171c22] border-1 border-gray-700 border-b-white text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
-                selected={glAccountFromDate}
-              />
+              <div>
+                <div>
+                  <button
+                    onClick={() => setOpen(true)}
+                    className="bg-[#171c22] cursor-pointer border-1 border-gray-700 border-b-white text-gray-400 text-sm rounded-md block w-full text-center py-1.5 px-2"
+                  >
+                    Select
+                  </button>
+                  <Dialog
+                    open={open}
+                    onClose={setOpen}
+                    className="relative z-10"
+                  >
+                    <DialogBackdrop
+                      transition
+                      className="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+                    />
+
+                    <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                      <div className="flex items-end justify-center mt-28 p-4 text-center sm:items-center sm:p-0">
+                        <DialogPanel
+                          transition
+                          className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+                        >
+                          <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <div className="sm:flex sm:items-start">
+                              <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                <DialogTitle
+                                  as="h3"
+                                  className="text-base font-semibold text-gray-900"
+                                >
+                                  Multiple Selection for Customer Code
+                                </DialogTitle>
+                                <Tabs>
+                                  <TabList className="flex gap-2 mt-2">
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Select Single Values
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Select Ranges
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Exclude Single Values
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Exclude Ranges
+                                    </Tab>
+                                  </TabList>
+
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr>
+                                          <th className="py-2">Single Value</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr className="grid grid-cols-2">
+                                          <th className="py-2">Lower limit</th>
+                                          <th className="py-2">Upper limit</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr>
+                                          <th className="py-2">Single Value</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr className="grid grid-cols-2">
+                                          <th className="py-2">Lower limit</th>
+                                          <th className="py-2">Upper limit</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                </Tabs>
+                              </div>
+                            </div>
+                          </div>
+                        </DialogPanel>
+                      </div>
+                    </div>
+                  </Dialog>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -181,11 +1470,331 @@ const Headers = () => {
                 placeholderText="To"
                 onChange={(date) => setTransactionCurrencyToDate(date)}
               />
-              <input
-                type="text"
-                className="bg-[#171c22] border-1 border-gray-700 border-b-white text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
-                selected={glAccountFromDate}
-              />
+              <div>
+                <div>
+                  <button
+                    onClick={() => setOpen(true)}
+                    className="bg-[#171c22] cursor-pointer border-1 border-gray-700 border-b-white text-gray-400 text-sm rounded-md block w-full text-center py-1.5 px-2"
+                  >
+                    Select
+                  </button>
+                  <Dialog
+                    open={open}
+                    onClose={setOpen}
+                    className="relative z-10"
+                  >
+                    <DialogBackdrop
+                      transition
+                      className="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
+                    />
+
+                    <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+                      <div className="flex items-end justify-center mt-28 p-4 text-center sm:items-center sm:p-0">
+                        <DialogPanel
+                          transition
+                          className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
+                        >
+                          <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                            <div className="sm:flex sm:items-start">
+                              <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                <DialogTitle
+                                  as="h3"
+                                  className="text-base font-semibold text-gray-900"
+                                >
+                                  Multiple Selection for Customer Code
+                                </DialogTitle>
+                                <Tabs>
+                                  <TabList className="flex gap-2 mt-2">
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Select Single Values
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Select Ranges
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Exclude Single Values
+                                    </Tab>
+                                    <Tab className="bg-[#171c22] focus:bg-[#434f5c] cursor-pointer border-1 border-gray-700 border-b-white text-white text-sm font-semibold rounded-md focus:ring-black focus:border-black block w-1/2 text-center py-1.5">
+                                      Exclude Ranges
+                                    </Tab>
+                                  </TabList>
+
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr>
+                                          <th className="py-2">Single Value</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr className="grid grid-cols-2">
+                                          <th className="py-2">Lower limit</th>
+                                          <th className="py-2">Upper limit</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr>
+                                          <th className="py-2">Single Value</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                  <TabPanel>
+                                    <table class="table-auto">
+                                      <thead>
+                                        <tr className="grid grid-cols-2">
+                                          <th className="py-2">Lower limit</th>
+                                          <th className="py-2">Upper limit</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody className="grid grid-cols-1 gap-2">
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                        <tr className="grid grid-cols-2 gap-2">
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                          <td>
+                                            <input
+                                              type="text"
+                                              className="bg-white border-1 border-gray-700 text-black text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full text-center py-1.5"
+                                            />
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </TabPanel>
+                                </Tabs>
+                              </div>
+                            </div>
+                          </div>
+                        </DialogPanel>
+                      </div>
+                    </div>
+                  </Dialog>
+                </div>
+              </div>
             </div>
           </div>
 
